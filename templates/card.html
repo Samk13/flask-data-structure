@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="container mx-auto bg-gray-900">
+    <div class="font-bold p-3 text-white">
+        <ul>
+            <li>
+                <div class="text-xl">
+                    <h3>Title</h3>
+                    <span>{{data.title}}</span>
+                </div>
+                    <p class="bg-orange-900 p-2">
+                        <span>{{data.body}}</span>
+                    </p>
+                <div>
+                    <a href="{{ url_for('card_view', index=index+1) }}">Previous</a>
+                    <a class="pl-2"  href="{{ url_for('card_view', index=index+1 ) }}">Next</a>
+                </div>
+            </li>
+        </ul>
+        <button>
+            <a href="{{url_for('hello')}}">
+                back home
+            </a>
+        </button>
+    </div>
+
+    <a href="/card/{{index + 1}}" />
+</body>
+</html>
