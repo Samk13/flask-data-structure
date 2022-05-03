@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title%}Add new card{% endblock %}
+{% block content %}
+    <h1>Add new card</h1>
+    <form method="POST" class="container mx-auto">
+        <label class="block  mt-5" for="title">Title</label>
+        <input class="mt-1 block text-black w-1/2 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+      invalid:border-pink-500 invalid:text-pink-600
+      focus:invalid:border-pink-500 focus:invalid:ring-pink-500" type="text" name="title" />
+        <label class="block mt-5" for="body">Body</label>
+        <input class="mt-1 block text-black w-1/2 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+      invalid:border-pink-500 invalid:text-pink-600
+      focus:invalid:border-pink-500 focus:invalid:ring-pink-500" type="text" name="body" />
+        <button class="text-lg mt-5 p-2 bg-green-400 rounded  hover:file:bg-violet-100
+    " type="submit">add title</button>
+    </form>
+{% endblock %}

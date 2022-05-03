@@ -71,11 +71,6 @@ def root_dir():  # pragma: no cover
 def get_file(filename):  # pragma: no cover
     try:
         src = os.path.join(root_dir() + "/static/", filename)
-        # Figure out how flask returns static files
-        # Tried:
-        # - render_template
-        # - send_file
-        # This should not be so non-obvious
         return src
     except IOError as exc:
         return str(exc)
@@ -93,10 +88,38 @@ def card_view(index):
     try:
         global data
 
-        return render_template("card.html", data=data[index], index=index)
+        return render_template(
+            "card.html", data=data[index], index=index, max_index=len(data) - 1
+        )
     except IndexError:
         return render_template("not_found.html")
-        abort(404)
+        # abort(404)
+
+
+@app.route("/all_cards")
+def all_cards():
+    try:
+        global data
+        return render_template("all_cards.html", data=data)
+    except IndexError:
+        return render_template("not_found.html")
+
+
+@app.route("/api/all_cards")
+def api_all_cards():
+    try:
+        global data
+        return jsonify(data)
+    except IndexError:
+        return render_template("not_found.html")
+
+
+@app.route("/add_card", methods=["GET", "POST"])
+def add_card():
+    if request.method == "POST":
+        return jsonify(request.form)
+    else:
+        return render_template("add_card.html")
 
 
 @app.route("/user", methods=["POST"])

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title%} All cards{% endblock %}
+{% block content %}
+    <div class="font-bold p-3 text-white">
+        <ul>
+            <li>
+                <div class="text-xl">
+                    <p class="text-white">tyesy</p>
+                        {% for card in data %}
+                        <li class="p-2 border border-1 border-dashed rounded m-2">
+                            <span>
+                                {{card.title}}
+                            </span>
+                            <button class="flex">
+                                <a href="{{ url_for('card_view', index=loop.index0)}}">Select</a>
+                            </button>
+                        </li>
+                        {% endfor%}
+
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
